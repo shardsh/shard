@@ -32,3 +32,29 @@ target_include_directories(
 	PUBLIC ${PROJECT_SOURCE_DIR}/include
 	PRIVATE ${PROJECT_SOURCE_DIR}/src
 )
+
+find_library(READLINE_LIB readline)
+if(NOT READLINE_LIB)
+	message(FATAL_ERROR "Readline library not found")
+endif()
+
+find_path(READLINE_INCLUDE_DIR readline/readline.h)
+if(NOT READLINE_INCLUDE_DIR)
+	message(FATAL_ERROR "Readline headers not found")
+endif()
+
+target_link_libraries(shard PRIVATE ${READLINE_LIB})
+target_include_directories(shard PRIVATE ${READLINE_INCLUDE_DIR})
+
+message(STATUS "Found Readline: ${READLINE_LIB}")
+message(STATUS "Readline includes: ${READLINE_INCLUDE_DIR}")
+
+configure_file(
+  ${PROJECT_SOURCE_DIR}/include/version.h.in
+  ${PROJECT_BINARY_DIR}/generated/version.h
+  @ONLY
+)
+
+target_include_directories(shard PRIVATE ${PROJECT_BINARY_DIR}/generated)
+
+
