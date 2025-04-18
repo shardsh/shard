@@ -3,10 +3,12 @@
 
 // util
 #define UNUSED(x) ((void)(x))
+#define PASS                                                                   \
+  do {                                                                         \
+  } while (0)
 
 // array
 #define ARRAY_SIZE(arr) (sizeof(arr) / (sizeof((arr)[0])))
-#define FOREACH(arr) for (size_t i = 0; i < ARRAY_SIZE(arr); i++)
 
 // int types
 typedef unsigned char u8;
@@ -19,22 +21,32 @@ typedef unsigned long long u64;
 typedef signed long long i64;
 
 // bool
-typedef enum { false = 0, true = 1 } bool;
-#define SUCCESS return false;
-#define FAILURE return true;
+#define bool int
+#define true 1
+#define false 0
+#define SUCCESS 0;
+#define FAILURE 1;
 
 // debug
 #define DEBUG 1
+#define DEBUG_LEVEL 3
 #ifdef DEBUG
-#define LOG(type, msg, ...) printf("[" type "] " msg "\n", ##__VA_ARGS__)
+#define LOG(type, level, msg, ...)                                             \
+  if ((level) > DEBUG_LEVEL)                                                   \
+  fprintf(stderr, "[" type "] " msg "\n", __VA_ARGS__)
 #else
 #define LOG(type, msg, ...)                                                    \
   do {                                                                         \
   } while (0)
 #endif
 
-#define INFO(msg, ...) LOG("INFO", msg, __VA_ARGS__)
-#define ERROR(msg, ...) LOG("ERROR", msg, __VA_ARGS__)
-#define TRACE(msg, ...) LOG("TRACE", msg, __VA_ARGS__)
+#include "colors.h"
+
+#define FATAL(msg, ...) LOG(BOLD_RED "FATAL" COLOR_RESET, 6, msg, __VA_ARGS__)
+#define ERROR(msg, ...) LOG(RED "ERROR" COLOR_RESET, 5, msg, __VA_ARGS__)
+#define IMPORTANT(msg, ...) LOG(YELLOW "!!!" COLOR_RESET, 4, msg, __VA_ARGS__)
+#define INFO(msg, ...) LOG(GREEN "INFO" COLOR_RESET, 3, msg, __VA_ARGS__)
+#define TRACE(msg, ...) LOG(BLUE "TRACE" COLOR_RESET, 2, msg, __VA_ARGS__)
+#define MEMLOG(msg, ...) LOG(PURPLE "MEM" COLOR_RESET, 1, msg, __VA_ARGS__)
 
 #endif // INCLUDE_SRC_TYPES_H_
