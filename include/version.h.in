@@ -1,0 +1,12 @@
+#ifndef SHARD_VERSION_H
+#define SHARD_VERSION_H
+
+#define SHARD_VERSION_MAJOR @Shard_Version_Major @
+#define SHARD_VERSION_MINOR @Shard_Version_Minor @
+#define SHARD_VERSION_PATCH @Shard_Version_Patch @
+#define SHARD_VERSION_STATUS "@Shard_Version_Status@"
+
+#define SHARD_VERSION_STRING "@PROJECT_VERSION@"
+#define SHARD_VERSION_SHORT "@Shard_Version_Major@.@Shard_Version_Minor@"
+
+#endif // SHARD_VERSION_H
