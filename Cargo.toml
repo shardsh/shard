@@ -8,7 +8,7 @@ repository = "https://github.com/shardsh/shard"
 homepage = "https://github.com/shardsh/shard"
 documentation = "https://github.com/shardsh/shard#readme"
 readme = "README.md"
-categories = ["command-line-utilities", "shell", "interpreter"]
+categories = ["command-line-utilities"]
 keywords = ["shell", "repl", "dsl", "lua", "cli"]
 authors = ["Nykenik24 <Nykenik24@proton.me>"]
 
