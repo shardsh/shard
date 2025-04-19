@@ -27,10 +27,10 @@ message(STATUS "${PROJECT_NAME} version: ${PROJECT_VERSION}")
 file(GLOB_RECURSE SOURCES "src/*.c")
 
 # Define the executable
-add_executable(shard ${SOURCES})
+add_executable(shr ${SOURCES})
 
 # Include directories
-target_include_directories(shard
+target_include_directories(shr
     PUBLIC ${PROJECT_SOURCE_DIR}/include
     PRIVATE ${PROJECT_SOURCE_DIR}/src
 )
@@ -51,8 +51,8 @@ if(USE_READLINE)
         message(FATAL_ERROR "Readline headers not found")
     endif()
 
-    target_link_libraries(shard PRIVATE ${READLINE_LIB})
-    target_include_directories(shard PRIVATE ${READLINE_INCLUDE_DIR})
+    target_link_libraries(shr PRIVATE ${READLINE_LIB})
+    target_include_directories(shr PRIVATE ${READLINE_INCLUDE_DIR})
 
     message(STATUS "Found Readline: ${READLINE_LIB}")
     message(STATUS "Readline includes: ${READLINE_INCLUDE_DIR}")
@@ -67,6 +67,6 @@ configure_file(
     @ONLY
 )
 
-target_include_directories(shard PRIVATE ${PROJECT_BINARY_DIR}/generated)
+target_include_directories(shr PRIVATE ${PROJECT_BINARY_DIR}/generated)
 
 
