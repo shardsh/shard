@@ -1,5 +1,5 @@
-#include "process.h"
-#include "command.h"
+#include "shard/process.h"
+#include "shard/command.h"
 
 #include <stddef.h>
 #include <stdio.h>
@@ -9,7 +9,7 @@
 #include <unistd.h>
 
 #include "builtin/builtin.h"
-#include <common.h>
+#include "shard/common.h"
 
 typedef int (*command_func)(char *, char **);
 
@@ -27,7 +27,7 @@ int run_command(char *name, char **args) {
     }
   }
   execvp(name, args);
-  perror("execvp");
+  perror("shard");
   _exit(1);
 };
 

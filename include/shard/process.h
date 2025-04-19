@@ -2,7 +2,7 @@
 #define INCLUDE_SRC_PROCESS_H_
 
 #include "command.h"
-#include <common.h>
+#include "shard/common.h"
 #include <sys/types.h>
 
 typedef struct {

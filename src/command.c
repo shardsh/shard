@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "command.h"
-#include <common.h>
+#include "shard/command.h"
+#include "shard/common.h"
 #include <string.h>
 
 command *shr_new_command(char *name, char **args, int num_args) {

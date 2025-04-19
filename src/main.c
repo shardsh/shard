@@ -4,34 +4,39 @@
 #include <readline/history.h>
 #include <readline/readline.h>
 // clang-format on
+#include <limits.h>
 #include <stdlib.h>
 #include <string.h>
-
-#include <common.h>
-#include <shard.h>
-
-#include <limits.h>
 #include <unistd.h>
 
-#include "colors.h"
-#include "command.h"
-#include "parser/lex.h"
-#include "process.h"
 #include "version.h"
 
+#define SHR_INPUT_DEFAULT 1
+#define SHR_OUTPUT_DEFAULT 1
+#define SHR_GETENV_DEFAULT 1
+#include <shard.h>
+
 int main(int argc, char *argv[]) {
-  printf("Welcome to Shard!\n");
-  printf("Version: " SHARD_VERSION_SHORT "\n\n");
+  shr_output("Welcome to Shard!\n");
+  shr_output("Version: " SHARD_VERSION_SHORT "\n\n");
 
   while (1) {
     char cwd[PATH_MAX];
     getcwd(cwd, sizeof(cwd));
 
-    printf("\n" BOLD_BLUE "%s" COLOR_RESET " at " GREEN "%s" COLOR_RESET "\n",
-           getenv("USER"), cwd);
+    char *user;
+    if (getenv("USER")) {
+      user = shr_getenv("USER");
+    } else {
+      user = "guest";
+    }
+
+    shr_output("\n" BOLD_BLUE "%s" COLOR_RESET " at " GREEN "%s" COLOR_RESET
+               "\n",
+               user, cwd);
 
     char *prompt = BOLD_CYAN ">> " COLOR_RESET;
-    char *input = readline(prompt);
+    char *input = shr_input(prompt);
     if (!input) {
       break;
     }

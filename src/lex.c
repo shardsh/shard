@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "lex.h"
-#include <common.h>
+#include "shard/common.h"
+#include "shard/lex.h"
 
 #define MAX_TOKEN_SIZE 100
 #define INITIAL_TOKEN_LIST_SIZE 10
@@ -211,7 +211,7 @@ const char *shr_token_type_to_string(token_type tktype) {
   }
 }
 
-#include <colors.h>
+#include <shard/colors.h>
 
 char *shr_colorize_tokens(token *tokens, int num_tokens) {
   size_t buf_size = 1024;
