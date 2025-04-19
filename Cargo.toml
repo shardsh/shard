@@ -2,6 +2,15 @@
 name = "shard"
 version = "0.1.0"
 edition = "2024"
+description = "The shell you deserve, written in Rust"
+license = "MIT"
+repository = "https://github.com/shardsh/shard"
+homepage = "https://github.com/shardsh/shard"
+documentation = "https://github.com/shardsh/shard#readme"
+readme = "README.md"
+categories = ["command-line-utilities", "shell", "interpreter"]
+keywords = ["shell", "repl", "dsl", "lua", "cli"]
+authors = ["Nykenik24 <Nykenik24@proton.me>"]
 
 [dependencies]
 chrono = "0.4.40"
