@@ -9,8 +9,6 @@
 #include <string.h>
 #include <unistd.h>
 
-#include "version.h"
-
 #define SHR_INPUT_DEFAULT 1
 #define SHR_OUTPUT_DEFAULT 1
 #define SHR_GETENV_DEFAULT 1
@@ -18,7 +16,6 @@
 
 int main(int argc, char *argv[]) {
   shr_output("Welcome to Shard!\n");
-  shr_output("Version: " SHARD_VERSION_SHORT "\n\n");
 
   while (1) {
     char cwd[PATH_MAX];
