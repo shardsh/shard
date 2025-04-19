@@ -1,5 +1,5 @@
 [package]
-name = "shard"
+name = "shard-shell"
 version = "0.2.0"
 edition = "2024"
 description = "The shell you deserve, written in Rust"
