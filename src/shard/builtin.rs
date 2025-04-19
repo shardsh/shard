@@ -17,6 +17,12 @@ fn pwd(_args: &[&str]) -> Result<()> {
     Ok(())
 }
 
+/// Get the list of built-in commands
+///
+/// Example:
+/// ```
+/// let builtins = shard::builtin::get_builtins();
+/// ```
 pub fn get_builtins() -> HashMap<&'static str, Box<dyn Fn(&[&str]) -> Result<()>>> {
     let mut builtins: HashMap<&'static str, Box<dyn Fn(&[&str]) -> Result<()>>> = HashMap::new();
 

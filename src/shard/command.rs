@@ -3,6 +3,15 @@ use rustyline::Result;
 use std::collections::HashMap;
 use std::process::Command;
 
+/// Execute a command
+/// - `command`: The command's name
+/// - `builtins`: List of builtins commands to look for builtins
+///
+/// Example:
+/// ```
+/// let builtins = shard::builtin::get_builtins();
+/// let cmd_result = shard::command::execute_command("echo \"Hello, World!\"", &builtins);
+/// ```
 pub fn execute_command(
     command: &str,
     builtins: &HashMap<&str, Box<dyn Fn(&[&str]) -> Result<()>>>,
